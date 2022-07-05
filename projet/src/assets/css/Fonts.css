@@ -1,0 +1,14 @@
+/* Fonts */
+/* Open Sans Regular - Latin */
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/OpenSans/open-sans-v29-latin-regular.eot");
+    src: local(""),
+        url("../fonts/OpenSans/open-sans-v29-latin-regular.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/OpenSans/open-sans-v29-latin-regular.svg#OpenSans") format("svg"),
+        url("../fonts/OpenSans/open-sans-v29-latin-regular.ttf") format("truetype"),
+        url("../fonts/OpenSans/open-sans-v29-latin-regular.woff") format("woff"),
+        url("../fonts/OpenSans/open-sans-v29-latin-regular.woff2") format("woff2");
+}

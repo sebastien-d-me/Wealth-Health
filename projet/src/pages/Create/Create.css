@@ -1,0 +1,81 @@
+/* Title */
+.create-title {
+    color: var(--white);
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* Row */
+.form-row {
+    display: flex;
+    gap: 0 20px;
+    margin-top: 15px;
+    width: calc(100% - 20px);
+}
+
+.form-row-full {
+    width: 100%;
+}
+
+/* Col */
+.form-col {
+    display: inline-flex;
+    flex: 1 0 50%;
+    flex-direction: column;
+}
+
+.form-col-full {
+    flex: 1 0 100%;
+}
+
+/* Label */
+label {
+    color: var(--cyan);
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 2.5px;
+}
+label::after {
+    content: " : ";
+}
+
+/* Input / Select */
+input, select {
+    box-sizing: border-box;
+    font-size: 20px;
+    height: 50px;
+    padding: 0 5px;
+}
+
+/* Divider */
+.form-divider {
+    color: var(--white);
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+.form-divider:first-of-type {
+    margin-top: 0;
+}
+
+/* Btn */
+.form-btn {
+    background-color: var(--light-green);
+    border: none;
+    color: var(--black);
+    font-size: 20px;
+    margin-top: 50px;
+    padding: 10px 20px;
+    transition: 0.5s;
+    width: 100%;
+}
+.form-btn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    cursor: pointer;
+}

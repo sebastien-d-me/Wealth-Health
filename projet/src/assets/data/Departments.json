@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Sales",
+        "value": "sales"
+    },
+    {
+        "title": "Marketing",
+        "value": "marketing"
+    },
+    {
+        "title": "Engineering",
+        "value": "engineering"
+    },
+    {
+        "title": "Human Resources",
+        "value": "human-resources"
+    },
+    {
+        "title": "Legal",
+        "value": "legal"
+    }
+]

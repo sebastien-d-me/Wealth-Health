@@ -1,0 +1,6 @@
+/* Main */
+main {
+    background-color: var(--black);
+    min-height: calc(100vh - 158px);
+    padding: 0 100px;
+}

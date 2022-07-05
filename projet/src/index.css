@@ -1,0 +1,14 @@
+/* Import */
+@import url("./assets/css/Fonts.css");
+@import url("./assets/css/Variables.css");
+
+/* General */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Content */
+* {
+    font-family: "Open Sans";
+}

@@ -1,0 +1,15 @@
+/* Variables */
+:root {
+    /* Black */
+    --black: #1B1919;
+
+    /* Cyan */
+    --cyan: #00ADB5;
+
+    /* Green */
+    --light-green: #83da83;
+    --green: #48a348;
+
+    /* White */
+    --white: #EEEEEE;
+}
