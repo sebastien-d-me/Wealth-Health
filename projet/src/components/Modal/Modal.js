@@ -11,6 +11,7 @@ function Modal({id, message}) {
         setModalClosed(true);
     }
     
+    
     return (
         <>
             {

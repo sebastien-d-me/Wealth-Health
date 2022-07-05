@@ -9,8 +9,11 @@ import { useState } from "react";
 function Create() {
     /* Modal */
     const [modalShow, setModalShow] = useState(false);
+    const [displayModal, setDisplayModal] = useState(false);
+
     const saveEmployee = () => {
-        setModalShow(!modalShow)
+        setModalShow(!modalShow);
+        setDisplayModal(true);
     }
 
 
@@ -90,12 +93,12 @@ function Create() {
 
 
             {/* Form Button */}
-            <button className="form-btn" onClick={saveEmployee}>Save</button>
+            <button id="form-btn" onClick={saveEmployee}>Save</button>
 
 
             {/* Form Message */}
             {
-                modalShow === true &&
+                displayModal === true &&
                 <Modal key={modalShow} id="modal-created" message="Employee Created !" />
             }
         </>
