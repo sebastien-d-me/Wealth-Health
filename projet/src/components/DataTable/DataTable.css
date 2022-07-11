@@ -1,0 +1,43 @@
+/* Table */
+.data-table {
+    border-collapse: collapse;
+    color: var(--white);
+    text-align: center;
+    width: 100%;
+}
+
+/* Head */
+.data-table-head {
+    background-color: var(--full-white);
+    color: var(--cyan);
+    font-size: 20px;
+}
+
+.data-table-head-value {
+    padding: 50px 20px;
+}
+
+/* Body */
+.data-table-body {}
+
+.data-table-body-value {
+    padding: 30px 20px;
+    transition: 0.5s;
+}
+.data-table-body-value:hover {
+    background-color: var(--light-green);
+    color: var(--black);
+    cursor: pointer;
+}
+
+/* Row */
+.data-table-row {
+    min-height: 50px;
+}
+
+.data-table-body > .data-table-row:nth-child(odd) {
+    background-color: var(--transparent-grey);
+}
+.data-table-body > .data-table-row:nth-child(even) {
+    background-color: var(--transparent-white);
+}

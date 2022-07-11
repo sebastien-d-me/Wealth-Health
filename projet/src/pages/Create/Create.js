@@ -1,12 +1,13 @@
 import "./Create.css";
 import { useState } from "react";
+import PageTitle from "../../components/PageTitle/PageTitle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import fr from "date-fns/locale/fr";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import States from "../../assets/data/States.json";
 import Departments from "../../assets/data/Departments.json";
 import Modal from "../../components/Modal/Modal";
-
 
 function Create() {
     // Modal
@@ -28,37 +29,40 @@ function Create() {
     // Employee
     const [employee, setEmployee] = useState({
         /* Informations */
-        "firstName": "",
-        "lastName": "",
-        "dateOfBirth": "",
-        "startDate": "",
+        "First name": "",
+        "Last name": "",
+        "Date of birth": "",
+        "Start date": "",
 
         /* Address */
-        "state": "",
-        "zipCode": "",
-        "street": "",
-        "city": "",
+        "State": "",
+        "ZIP Code": "",
+        "Street": "",
+        "City": "",
 
         /* Department */
-        "department": ""     
+        "Department": ""     
     });
 
 
     // Form
+    /* Elements */
     const handleFormChange = (event) => {
         setEmployee({
             ...employee, [event.target.name]: event.target.value
         });
     };
 
+    /* DatePicker */
     const [dateOfBirth, setDateOfBirth] = useState("");
     const [startDate, setStartDate] = useState("");
     const handleFormDateChange = (name, value) => {
         setEmployee({
-            ...employee, [name]: value
+            ...employee, [name]: new Date(value).toLocaleDateString("fr")
         });
     };
 
+    /* Dropdown */
     const handleFormDropdownChange = (name, value) => {
         setEmployee({
             ...employee, [name]: value
@@ -86,8 +90,10 @@ function Create() {
     // Template
     return (
         <>
-            <span className="create-title">Create a new employee</span>
+            {/* Title */}
+            <PageTitle title="Create a new employee" />
             
+            {/* Form */}
             <form action="#">
                 {/* Form Informations */}
                 <div className="form-divider">
@@ -97,22 +103,22 @@ function Create() {
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="first-name">First name</label>
-                        <input id="first-name" name="firstName" onChange={handleFormChange} placeholder="Your first name" type="text" />
+                        <input id="first-name" name="First name" onChange={handleFormChange} placeholder="Your first name" type="text" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="last-name">Last name</label>
-                        <input id="last-name" name="lastName" onChange={handleFormChange} placeholder="Your last name" type="text" />
+                        <input id="last-name" name="Last name" onChange={handleFormChange} placeholder="Your last name" type="text" />
                     </div>
                 </div>
 
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="date-of-birth">Date of birth</label>
-                        <DatePicker className="date-picker-input" id="date-of-birth" onChange={(date) => {handleFormDateChange("dateOfBirth", date); setDateOfBirth(date)} } placeholderText="Your birth date" selected={dateOfBirth} />
+                        <DatePicker className="date-picker-input" dateFormat="dd/MM/yyyy" id="date-of-birth" locale={fr} onChange={(date) => {handleFormDateChange("Date of birth", date); setDateOfBirth(date)} } placeholderText="Your birth date" selected={dateOfBirth} />
                     </div>
                     <div className="form-col">
                         <label htmlFor="start-date">Start date</label>
-                        <DatePicker className="date-picker-input" id="start-date" onChange={(date) => {handleFormDateChange("startDate", date); setStartDate(date)} } placeholderText="Your start date" selected={startDate} />
+                        <DatePicker className="date-picker-input" dateFormat="dd/MM/yyyy" id="start-date" locale={fr} onChange={(date) => {handleFormDateChange("Start date", date); setStartDate(date)} } placeholderText="Your start date" selected={startDate} />
                     </div>
                 </div>
 
@@ -125,22 +131,22 @@ function Create() {
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="state">State</label>
-                        <Dropdown name="state" onChangeDropdown={(value) => handleFormDropdownChange("state", value)} optionsList={States} optionValue="abbreviation" optionTitle="name" />
+                        <Dropdown name="State" onChangeDropdown={(value) => handleFormDropdownChange("State", value)} optionsList={States} optionValue="abbreviation" optionTitle="name" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zip-code" name="zipCode" onChange={handleFormChange} type="number" />
+                        <input id="zip-code" name="ZIP Code" onChange={handleFormChange} type="number" />
                     </div>
                 </div>
 
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="street">Street</label>
-                        <input id="street" name="street" onChange={handleFormChange} type="text" />
+                        <input id="street" name="Street" onChange={handleFormChange} type="text" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="city">City</label>
-                        <input id="city" name="city" onChange={handleFormChange} type="text" />
+                        <input id="city" name="City" onChange={handleFormChange} type="text" />
                     </div>
                 </div>
 
@@ -153,7 +159,7 @@ function Create() {
                 <div className="form-row form-row-full">
                     <div className="form-col form-col-full">
                         <label htmlFor="department">Department</label>
-                        <Dropdown name="department" onChangeDropdown={(value) => handleFormDropdownChange("department", value)} optionsList={Departments} optionValue="value" optionTitle="title" />
+                        <Dropdown id="departement" name="Department" onChangeDropdown={(value) => handleFormDropdownChange("Department", value)} optionsList={Departments} optionValue="value" optionTitle="title" />
                     </div>
                 </div>
             </form>

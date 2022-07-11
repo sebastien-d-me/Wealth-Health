@@ -10,6 +10,11 @@
     --light-green: #83da83;
     --green: #48a348;
 
+    /* Grey */
+    --transparent-grey: #68686880;
+    
     /* White */
+    --transparent-white: #EEEEEE80;
     --white: #EEEEEE;
+    --full-white: #FFFFFF;
 }

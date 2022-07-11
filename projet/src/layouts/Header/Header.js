@@ -23,7 +23,7 @@ function Header() {
                 </NavLink>
                 <NavLink className="nav-link" to="/list">
                     <i className="nav-icon ri-list-check"></i>
-                    <span>View current employees</span>
+                    <span>View current employee(s)</span>
                 </NavLink>
             </div>
         </nav>
