@@ -3,6 +3,7 @@ import Main from "./Main/Main";
 
 
 function Layout({children}) {
+    // Template
     return (
         <>
             <Header />

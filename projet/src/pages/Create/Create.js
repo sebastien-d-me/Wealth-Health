@@ -1,22 +1,78 @@
 import "./Create.css";
+import { useState } from "react";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import States from "../../assets/data/States.json";
 import Departments from "../../assets/data/Departments.json";
 import Modal from "../../components/Modal/Modal";
-import { useState } from "react";
 
 
 function Create() {
-    /* Modal */
+    // Modal
     const [modalShow, setModalShow] = useState(false);
     const [displayModal, setDisplayModal] = useState(false);
 
-    const saveEmployee = () => {
-        setModalShow(!modalShow);
-        setDisplayModal(true);
+    const modalParameter = {
+        "backgroundColor": "#EEEEEE",
+        "borderRadius": 10,
+        "boxShadow": "0 0 5px #1B1919",
+        "color": "#1B1919",
+        "fontSize": 18,
+        "height": "fit-content",
+        "padding": "20px 50px",
+        "width": "fit-content"
     }
 
 
+    // Employee
+    const [employee, setEmployee] = useState({
+        /* Informations */
+        "firstName": "",
+        "lastName": "",
+        "dateOfBirth": "",
+        "startDate": "",
+
+        /* Address */
+        "state": "",
+        "zipCode": "",
+        "street": "",
+        "city": "",
+
+        /* Department */
+        "department": ""     
+    });
+
+
+    // Form
+    const handleFormChange = (event) => {
+        setEmployee({
+            ...employee, [event.target.name]: event.target.value
+        });
+    };
+
+    const handleFormDropdownChange = (name, value) => {
+        setEmployee({
+            ...employee, [name]: value
+        });
+    }
+
+    // Save 
+    const saveEmployee = () => {
+        /* Show the modal */
+        setModalShow(!modalShow);
+        setDisplayModal(true);
+
+        /* Get the list of current employees */
+        const employees = JSON.parse(localStorage.getItem("employees")) || [];
+
+        /* Add the employee to the list */
+        employees.push(employee);
+
+        /* Save the new employees list */
+        localStorage.setItem("employees", JSON.stringify(employees));
+    }
+
+
+    // Template
     return (
         <>
             <span className="create-title">Create a new employee</span>
@@ -30,22 +86,22 @@ function Create() {
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="first-name">First name</label>
-                        <input id="first-name" placeholder="Your first name" type="text" />
+                        <input id="first-name" name="firstName" onChange={handleFormChange} placeholder="Your first name" type="text" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="last-name">Last name</label>
-                        <input id="last-name" placeholder="Your last name" type="text" />
+                        <input id="last-name" name="lastName" onChange={handleFormChange} placeholder="Your last name" type="text" />
                     </div>
                 </div>
 
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="date-of-birth">Date of birth</label>
-                        <input id="date-of-birth" type="date" />
+                        <input id="date-of-birth" name="dateOfBirth" onChange={handleFormChange} type="date" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="start-date">Start date</label>
-                        <input id="start-date" type="date" />
+                        <input id="start-date" name="startDate" onChange={handleFormChange} type="date" />
                     </div>
                 </div>
 
@@ -58,22 +114,22 @@ function Create() {
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="state">State</label>
-                        <Dropdown name="state" optionsList={States} optionValue="abbreviation" optionTitle="name" />
+                        <Dropdown name="state" onChangeDropdown={(event) => handleFormDropdownChange("state", event)} optionsList={States} optionValue="abbreviation" optionTitle="name" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zip-code" type="number" />
+                        <input id="zip-code" name="zipCode" onChange={handleFormChange} type="number" />
                     </div>
                 </div>
 
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="street">Street</label>
-                        <input id="street" type="text" />
+                        <input id="street" name="street" onChange={handleFormChange} type="text" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="city">City</label>
-                        <input id="city" type="text" />
+                        <input id="city" name="city" onChange={handleFormChange} type="text" />
                     </div>
                 </div>
 
@@ -86,7 +142,7 @@ function Create() {
                 <div className="form-row form-row-full">
                     <div className="form-col form-col-full">
                         <label htmlFor="department">Department</label>
-                        <Dropdown name="department" optionsList={Departments} optionValue="value" optionTitle="title" />
+                        <Dropdown name="department" onChangeDropdown={(event) => handleFormDropdownChange("department", event)} optionsList={Departments} optionValue="value" optionTitle="title" />
                     </div>
                 </div>
             </form>
@@ -99,7 +155,7 @@ function Create() {
             {/* Form Message */}
             {
                 displayModal === true &&
-                <Modal key={modalShow} id="modal-created" message="Employee Created !" />
+                <Modal key={modalShow} id="modal-created" parameter={modalParameter} message="Employee Created !" />
             }
         </>
     );

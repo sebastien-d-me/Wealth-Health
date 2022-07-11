@@ -1,8 +1,7 @@
-/** Rajouter height, width, border, background etc.. */
-
-function Dropdown({name, optionsList, optionValue, optionTitle}) {
+function Dropdown({name, onChangeDropdown, optionsList, optionValue, optionTitle}) {
+    // Template
     return (
-        <select id={name} name={name}>
+        <select id={name} name={name} onChange={(e) => {onChangeDropdown(e.target.value)} }>
             {
                 optionsList.map((option) => {
                     return <option key={option[optionValue]} value={option[optionValue]}>{option[optionTitle]}</option>

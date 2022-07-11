@@ -2,6 +2,7 @@ import "./Main.css";
 
 
 function Main({content}) {
+    // Template
     return (
         <main>
             {content}

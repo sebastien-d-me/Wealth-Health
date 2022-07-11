@@ -5,6 +5,7 @@ import "remixicon/fonts/remixicon.css";
 
 
 function Header() {
+    // Template
     return (
         <nav>
             {/* Header Logo */}
