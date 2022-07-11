@@ -52,6 +52,15 @@ input, select {
     padding: 0 5px;
 }
 
+/* DatePicker */
+.react-datepicker__triangle {
+    display: none;
+}
+
+.date-picker-input {
+    width: 100%;
+}
+
 /* Divider */
 .form-divider {
     color: var(--white);
