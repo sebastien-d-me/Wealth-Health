@@ -59,8 +59,9 @@ function DataTable({data, nameData}) {
     return(
         <>
             {/* Recherche */}
-            <div>
-                <input type="search" onChange={e => setDataSearchInput(e.target.value)}/>
+            <div className="data-search">
+                <label htmlFor="search">Search</label>
+                <input id="search" name="search" onChange={e => setDataSearchInput(e.target.value)} placeholder="Your search" type="search" />
             </div>
 
             {/* Tableau */}
