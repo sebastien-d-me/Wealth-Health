@@ -1,10 +1,10 @@
-function Dropdown({name, onChangeDropdown, optionsList, optionValue, optionTitle}) {
+function Dropdown({name, onChangeDropdown, optionsList}) {
     // Template
     return (
-        <select id={name} name={name} onChange={(e) => {onChangeDropdown(e.target.value)} }>
+        <select defaultValue={optionsList[0].abbreviation} id={name} name={name} onChange={(e) => {onChangeDropdown(e.target.value)} }>
             {
-                optionsList.map((option) => {
-                    return <option key={option[optionValue]} value={option[optionValue]}>{option[optionTitle]}</option>
+                optionsList.map((option, index) => {
+                    return <option key={index} value={option["abbreviation"]}>{option["name"]}</option>
                 })
             }
         </select>

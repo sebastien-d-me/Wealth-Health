@@ -21,7 +21,7 @@
 /* Sort */
 .data-table-sort {
     border-right: 3px solid var(--white);
-    padding: 50px 5px;
+    padding: 30px 5px;
     text-align: -webkit-center;
     text-transform: uppercase;
 }
@@ -30,12 +30,13 @@
 }
 
 .data-table-sort-arrow {
+    color: var(--black);
     font-size: 25px;
     transition: 0.5s;
     vertical-align: middle;
 }
 .data-table-sort-arrow:hover {
-    color: var(--black);
+    color: var(--green);
     cursor: pointer;
 }
 

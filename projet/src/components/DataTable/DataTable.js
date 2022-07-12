@@ -10,21 +10,25 @@ function DataTable({data, nameData}) {
 
     useEffect(() => {
         let resultFound = [];
-        /* Si le champ contient au moins une valeur */
+
+        /* If the field contains at least one value */
         if(dataSearchInput !== "") {
-            /* Initialise les states */
+
+            /* Initialize states */
             setDataSearched([]);
             setDataSearchActive(true);
-            /* Pour chaque employé */
+
+            /* For each employee */
             dataSorted.forEach((properties, index) => {
-                /* Vérifie si la recherche correspond à un élément */
+                /* Checks if the search matches an item */
                 Object.keys(properties).forEach(function(key) {
                     if(properties[key].toLowerCase().includes(dataSearchInput.toLowerCase())) {
                         resultFound.push(data[index]);
                     }
                 });
             });
-            /* Met les résultats dans le tableau */
+
+            /* Put the results in the table */
             setDataSearched([...new Set(resultFound)]);
         } else {
             setDataSearchActive(false);
@@ -57,10 +61,10 @@ function DataTable({data, nameData}) {
         setDataShow(false);
     }
 
-    
+
     // Refresh
     useEffect(() => {
-        setDataShow(true)
+        setDataShow(true);
     }, [dataShow, dataSorted]);
     
   
@@ -68,15 +72,15 @@ function DataTable({data, nameData}) {
     // Template
     return(
         <>
-            {/* Recherche */}
+            {/* Search */}
             <div className="data-search">
                 <label htmlFor="search">Search</label>
                 <input id="search" name="search" onChange={e => setDataSearchInput(e.target.value)} placeholder="Your search" type="search" />
             </div>
 
-            {/* Tableau */}
+            {/* Table */}
             <table className="data-table">
-                {/* Nom des propriétés */}
+                {/* Name of the properties */}
                 <thead className="data-table-head">
                     <tr className="data-table-row">
                         {
@@ -91,7 +95,7 @@ function DataTable({data, nameData}) {
                     </tr>
                 </thead>
 
-                {/* Valeurs des propriétés */}
+                {/* Property values */}
                 <tbody className="data-table-body">
                     {
                         dataShow === true && dataSearchActive === true && dataSearched.map((element, index) =>

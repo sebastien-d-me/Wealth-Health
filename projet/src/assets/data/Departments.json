@@ -1,22 +1,22 @@
 [
     {
-        "title": "Sales",
-        "value": "sales"
+        "name": "Sales",
+        "abbreviation": "sales"
     },
     {
-        "title": "Marketing",
-        "value": "marketing"
+        "name": "Marketing",
+        "abbreviation": "marketing"
     },
     {
-        "title": "Engineering",
-        "value": "engineering"
+        "name": "Engineering",
+        "abbreviation": "engineering"
     },
     {
-        "title": "Human Resources",
-        "value": "human-resources"
+        "name": "Human Resources",
+        "abbreviation": "human-resources"
     },
     {
-        "title": "Legal",
-        "value": "legal"
+        "name": "Legal",
+        "abbreviation": "legal"
     }
 ]

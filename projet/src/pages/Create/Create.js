@@ -1,9 +1,8 @@
 import "./Create.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import fr from "date-fns/locale/fr";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import States from "../../assets/data/States.json";
 import Departments from "../../assets/data/Departments.json";
@@ -35,13 +34,13 @@ function Create() {
         "Start date": "",
 
         /* Address */
-        "State": "",
+        "State": States[0].abbreviation,
         "ZIP Code": "",
         "Street": "",
         "City": "",
 
         /* Department */
-        "Department": ""     
+        "Department": Departments[0].abbreviation     
     });
 
 
@@ -58,7 +57,7 @@ function Create() {
     const [startDate, setStartDate] = useState("");
     const handleFormDateChange = (name, value) => {
         setEmployee({
-            ...employee, [name]: new Date(value).toLocaleDateString("fr")
+            ...employee, [name]: new Date(value).toLocaleDateString("en")
         });
     };
 
@@ -71,20 +70,61 @@ function Create() {
 
     
     // Save 
+    const [formOK, setFormOK] = useState(false);
+    const [errorForm, setErrorForm] = useState([]);
+
     const saveEmployee = () => {
-        /* Show the modal */
-        setModalShow(!modalShow);
-        setDisplayModal(true);
+        /* Verify if all the fields are not empty */
+        setErrorForm([]);
+        Object.keys(employee).forEach((input, index) => {
+            if(Object.values(employee)[index] === "") {
+                setFormOK(false);
+                setErrorForm(errorForm => [...errorForm, input]);
+            }
+        });
 
-        /* Get the list of current employees */
-        const employees = JSON.parse(localStorage.getItem("employees")) || [];
-
-        /* Add the employee to the list */
-        employees.push(employee);
-
-        /* Save the new employees list */
-        localStorage.setItem("employees", JSON.stringify(employees));
+        if(errorForm.length === 0) {
+            setFormOK(true);
+        }
     }
+
+    useEffect(() => {
+        if(formOK === true && errorForm.length === 0) {
+            /* Show the modal */
+            setModalShow(!modalShow);
+            setDisplayModal(true);
+
+            /* Get the list of current employees */
+            const employees = JSON.parse(localStorage.getItem("employees")) || [];
+
+            /* Add the employee to the list */
+            employees.push(employee);
+
+            /* Save the new employees list */
+            localStorage.setItem("employees", JSON.stringify(employees));
+
+            /* Reset the form */
+            setEmployee({
+                /* Informations */
+                "First name": "",
+                "Last name": "",
+                "Date of birth": "",
+                "Start date": "",
+        
+                /* Address */
+                "State": States[0].abbreviation,
+                "ZIP Code": "",
+                "Street": "",
+                "City": "",
+        
+                /* Department */
+                "Department": Departments[0].abbreviation     
+            });
+            document.getElementById("form-create").reset();
+            setDateOfBirth("");
+            setStartDate("");
+        }
+    }, [errorForm])
 
 
     // Template
@@ -93,8 +133,20 @@ function Create() {
             {/* Title */}
             <PageTitle title="Create a new employee" />
             
+            {/* Errors */}
+            {errorForm.length !== 0 &&
+                <div className="form-errors">
+                    <span className="form-error-info">Please fill in the following fields correctly :</span>
+                    <ul className="form-error-list">
+                        {
+                            errorForm.map((error, index) => <li className="form-error" key={index}>{error}</li>)
+                        }
+                    </ul>
+                </div>
+            }
+
             {/* Form */}
-            <form action="#">
+            <form action="#" id="form-create">
                 {/* Form Informations */}
                 <div className="form-divider">
                     <span>Informations</span>
@@ -114,11 +166,11 @@ function Create() {
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="date-of-birth">Date of birth</label>
-                        <DatePicker className="date-picker-input" dateFormat="dd/MM/yyyy" id="date-of-birth" locale={fr} onChange={(date) => {handleFormDateChange("Date of birth", date); setDateOfBirth(date)} } placeholderText="Your birth date" selected={dateOfBirth} />
+                        <DatePicker className="date-picker-input" id="date-of-birth" onChange={(date) => {handleFormDateChange("Date of birth", date); setDateOfBirth(date)} } placeholderText="Your birth date" selected={dateOfBirth} />
                     </div>
                     <div className="form-col">
                         <label htmlFor="start-date">Start date</label>
-                        <DatePicker className="date-picker-input" dateFormat="dd/MM/yyyy" id="start-date" locale={fr} onChange={(date) => {handleFormDateChange("Start date", date); setStartDate(date)} } placeholderText="Your start date" selected={startDate} />
+                        <DatePicker className="date-picker-input" id="start-date" onChange={(date) => {handleFormDateChange("Start date", date); setStartDate(date)} } placeholderText="Your start date" selected={startDate} />
                     </div>
                 </div>
 
@@ -130,8 +182,8 @@ function Create() {
 
                 <div className="form-row">
                     <div className="form-col">
-                        <label htmlFor="state">State</label>
-                        <Dropdown name="State" onChangeDropdown={(value) => handleFormDropdownChange("State", value)} optionsList={States} optionValue="abbreviation" optionTitle="name" />
+                        <label htmlFor="State">State</label>
+                        <Dropdown name="State" onChangeDropdown={(value) => handleFormDropdownChange("State", value)} optionsList={States} />
                     </div>
                     <div className="form-col">
                         <label htmlFor="zip-code">Zip Code</label>
@@ -158,8 +210,8 @@ function Create() {
 
                 <div className="form-row form-row-full">
                     <div className="form-col form-col-full">
-                        <label htmlFor="department">Department</label>
-                        <Dropdown id="departement" name="Department" onChangeDropdown={(value) => handleFormDropdownChange("Department", value)} optionsList={Departments} optionValue="value" optionTitle="title" />
+                        <label htmlFor="Department">Department</label>
+                        <Dropdown name="Department" onChangeDropdown={(value) => handleFormDropdownChange("Department", value)} optionsList={Departments} />
                     </div>
                 </div>
             </form>

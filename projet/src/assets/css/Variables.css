@@ -7,11 +7,14 @@
     --cyan: #00ADB5;
 
     /* Green */
-    --light-green: #83da83;
+    --light-green: #83DA83;
     --green: #48a348;
 
     /* Grey */
     --transparent-grey: #68686880;
+
+    /* Red */
+    --light-red: #da8383;
     
     /* White */
     --transparent-white: #EEEEEE80;
