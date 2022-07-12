@@ -84,8 +84,15 @@ function DataTable({data, nameData}) {
                     {/* Name of the properties */}
                     <thead className="data-table-head">
                         <tr className="data-table-row">
+                            {/* If there is no employees */}
                             {
-                                nameData.map((name, index) =>
+                                nameData.length === 0 &&
+                                <td className="">There is no employees for the moment...</td>
+                            }
+
+                            {/* If there is at least 1 employee */}
+                            {
+                                nameData.length !== 0 && nameData.map((name, index) =>
                                     <td className="data-table-sort" key={index}>
                                         <i className="data-table-sort-arrow ri-arrow-down-s-line" onClick={() => sortData("ASC", name)}></i>
                                         {name}
