@@ -3,28 +3,6 @@ import { useState, useEffect } from "react";
 
 
 function DataTable({data, nameData}) {
-    // Sort
-    const [dataSorted, setDataSorted] = useState(data);
-    const [dataShow, setDataShow] = useState(true);
-
-    const sortData = (order, type) => {
-        /* Do the filter */
-        if(order === "ASC") {
-            setDataSorted(dataSorted.sort((a, b) => a[type].localeCompare(b[type])));
-        } else {
-            setDataSorted(dataSorted.sort((a, b) => b[type].localeCompare(a[type])));
-        }
-
-        /* Refresh */
-        setDataShow(false);
-    }
-
-    /* Refresh */
-    useEffect(() => {
-        setDataShow(true)
-    }, [dataShow]);
-
-
     // Search
     const [dataSearchInput, setDataSearchInput] = useState("");
     const [dataSearched, setDataSearched] = useState([]);
@@ -53,6 +31,38 @@ function DataTable({data, nameData}) {
             setDataSearched([]);
         }
     }, [dataSearchInput]);
+
+
+    // Sort
+    const [dataSorted, setDataSorted] = useState(data);
+    const [dataShow, setDataShow] = useState(true);
+
+    const sortData = (order, type) => {
+        /* Do the filter */
+        if(order === "ASC") {
+            if(dataSearchActive === false) {
+                setDataSorted(dataSorted.sort((a, b) => a[type].localeCompare(b[type])));
+            } else {
+                setDataSearched(dataSearched.sort((a, b) => a[type].localeCompare(b[type])));
+            }
+        } else {
+            if(dataSearchActive === false) {
+                setDataSorted(dataSorted.sort((a, b) => b[type].localeCompare(a[type])));
+            } else {
+                setDataSearched(dataSearched.sort((a, b) => b[type].localeCompare(a[type])));
+            }
+        }
+
+        /* Refresh */
+        setDataShow(false);
+    }
+
+    
+    // Refresh
+    useEffect(() => {
+        setDataShow(true)
+    }, [dataShow, dataSorted]);
+    
   
 
     // Template
@@ -84,8 +94,8 @@ function DataTable({data, nameData}) {
                 {/* Valeurs des propriétés */}
                 <tbody className="data-table-body">
                     {
-                        dataSearchActive === true && dataSearched.map((element, index) =>
-                            <tr className="data-table-row sss" key={index}>
+                        dataShow === true && dataSearchActive === true && dataSearched.map((element, index) =>
+                            <tr className="data-table-row" key={index}>
                                 {
                                     nameData.map((name, index) => 
                                         <td className="data-table-body-value" key={index}>{element[name]}</td>
