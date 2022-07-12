@@ -3,19 +3,17 @@
     margin-bottom: 20px;
 }
 
+/* Container */
+.data-table-container {
+    overflow-x: auto;
+}
+
 /* Table */
 .data-table {
     border-collapse: collapse;
     color: var(--white);
     text-align: center;
     width: 100%;
-}
-
-/* Head */
-.data-table-head {
-    background-color: var(--full-white);
-    color: var(--cyan);
-    font-size: 20px;
 }
 
 /* Sort */
@@ -40,6 +38,13 @@
     cursor: pointer;
 }
 
+/* Head */
+.data-table-head {
+    background-color: var(--full-white);
+    color: var(--cyan);
+    font-size: 20px;
+}
+
 /* Body */
 .data-table-body {}
 
@@ -62,4 +67,13 @@
 }
 .data-table-body > .data-table-row:nth-child(even) {
     background-color: var(--transparent-white);
+}
+
+/** Responsive **/
+@media screen and (max-width: 1400px) {
+    /* Sort */
+    .data-table-sort-arrow {
+        display: block;
+        font-size: 20px;
+    }
 }

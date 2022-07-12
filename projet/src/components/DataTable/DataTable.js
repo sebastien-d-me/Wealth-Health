@@ -79,49 +79,51 @@ function DataTable({data, nameData}) {
             </div>
 
             {/* Table */}
-            <table className="data-table">
-                {/* Name of the properties */}
-                <thead className="data-table-head">
-                    <tr className="data-table-row">
+            <div className="data-table-container">
+                <table className="data-table">
+                    {/* Name of the properties */}
+                    <thead className="data-table-head">
+                        <tr className="data-table-row">
+                            {
+                                nameData.map((name, index) =>
+                                    <td className="data-table-sort" key={index}>
+                                        <i className="data-table-sort-arrow ri-arrow-down-s-line" onClick={() => sortData("ASC", name)}></i>
+                                        {name}
+                                        <i className="data-table-sort-arrow ri-arrow-up-s-line" onClick={() => sortData("DESC", name)}></i> 
+                                    </td>
+                                )
+                            }
+                        </tr>
+                    </thead>
+
+                    {/* Property values */}
+                    <tbody className="data-table-body">
                         {
-                            nameData.map((name, index) =>
-                                <td className="data-table-sort" key={index}>
-                                    <i className="data-table-sort-arrow ri-arrow-down-s-line" onClick={() => sortData("ASC", name)}></i>
-                                    {name}
-                                    <i className="data-table-sort-arrow ri-arrow-up-s-line" onClick={() => sortData("DESC", name)}></i> 
-                                </td>
+                            dataShow === true && dataSearchActive === true && dataSearched.map((element, index) =>
+                                <tr className="data-table-row" key={index}>
+                                    {
+                                        nameData.map((name, index) => 
+                                            <td className="data-table-body-value" key={index}>{element[name]}</td>
+                                        )
+                                    }
+                                </tr>
                             )
                         }
-                    </tr>
-                </thead>
-
-                {/* Property values */}
-                <tbody className="data-table-body">
-                    {
-                        dataShow === true && dataSearchActive === true && dataSearched.map((element, index) =>
-                            <tr className="data-table-row" key={index}>
-                                {
-                                    nameData.map((name, index) => 
-                                        <td className="data-table-body-value" key={index}>{element[name]}</td>
-                                    )
-                                }
-                            </tr>
-                        )
-                    }
-                    
-                    {
-                        dataShow === true && dataSearchActive === false && dataSorted.map((element, index) => 
-                            <tr className="data-table-row" key={index}>
-                                {
-                                    nameData.map((name, index) => 
-                                        <td className="data-table-body-value" key={index}>{element[name]}</td>
-                                    )
-                                }
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+                        
+                        {
+                            dataShow === true && dataSearchActive === false && dataSorted.map((element, index) => 
+                                <tr className="data-table-row" key={index}>
+                                    {
+                                        nameData.map((name, index) => 
+                                            <td className="data-table-body-value" key={index}>{element[name]}</td>
+                                        )
+                                    }
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
         </>
     );
 }

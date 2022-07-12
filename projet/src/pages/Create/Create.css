@@ -12,9 +12,27 @@
     color: var(--light-red);
 }
 
+/* Divider */
+.form-divider {
+    color: var(--white);
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+.form-divider:first-of-type {
+    margin-top: 0;
+}
+
+/* Category */
+.form-category {
+    display: block;
+    margin-bottom: 20px;
+}
+
 /* Row */
 .form-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 0 20px;
     margin-top: 15px;
     width: calc(100% - 20px);
@@ -27,7 +45,7 @@
 /* Col */
 .form-col {
     display: inline-flex;
-    flex: 1 0 50%;
+    flex: 1 0 calc((100% - 40px) / 2);
     flex-direction: column;
 }
 
@@ -54,6 +72,7 @@ input, select {
     font-size: 20px;
     height: 50px;
     padding: 0 5px;
+    width: 100%;
 }
 
 /* DatePicker */
@@ -63,17 +82,6 @@ input, select {
 
 .date-picker-input {
     width: 100%;
-}
-
-/* Divider */
-.form-divider {
-    color: var(--white);
-    font-size: 25px;
-    font-weight: bold;
-    margin-top: 50px;
-}
-.form-divider:first-of-type {
-    margin-top: 0;
 }
 
 /* Btn */
@@ -91,4 +99,19 @@ input, select {
     background-color: var(--green);
     color: var(--white);
     cursor: pointer;
+}
+
+/** Responsive **/
+@media screen and (max-width: 992px) {
+    /* Row */
+    .form-row {
+        margin-top: 0;
+        width: 100%;
+    }
+
+    /* Col */
+    .form-col {
+        flex: 1 0 100%;
+        margin-bottom: 15px;
+    }
 }

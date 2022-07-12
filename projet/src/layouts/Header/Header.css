@@ -3,6 +3,7 @@ nav {
     align-items: center;
     background-color: var(--white);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px 50px;
     width: calc(100% - 100px);
@@ -44,4 +45,34 @@ nav {
 /* Icon */
 .nav-icon {
     margin: auto 5px auto auto;
+}
+
+/** Responsive **/
+@media screen and (max-width: 992px) {
+    /* Navigation */
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Title */
+    .nav-title {
+        display: none;
+    }
+
+    /* Links */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        margin: 15px auto;
+        text-align: center;
+    }
+
+    /* Link */
+    .nav-link {
+        margin: auto auto 15px auto;
+    }
+    .nav-link:last-of-type {
+        margin-bottom: unset;
+    }
 }

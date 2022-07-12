@@ -149,7 +149,7 @@ function Create() {
             <form action="#" id="form-create">
                 {/* Form Informations */}
                 <div className="form-divider">
-                    <span>Informations</span>
+                    <span className="form-category">Informations</span>
                 </div>
 
                 <div className="form-row">
@@ -177,7 +177,7 @@ function Create() {
 
                 {/* Form Address */}
                 <div className="form-divider">
-                    <span>Address</span>
+                    <span className="form-category">Address</span>
                 </div>
 
                 <div className="form-row">
@@ -205,7 +205,7 @@ function Create() {
 
                 {/* Form Department */}
                 <div className="form-divider">
-                    <span>Department</span>
+                    <span className="form-category">Department</span>
                 </div>
 
                 <div className="form-row form-row-full">

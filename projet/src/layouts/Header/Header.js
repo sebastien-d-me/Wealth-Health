@@ -16,7 +16,7 @@ function Header() {
 
 
             {/* Menu */}
-            <div>
+            <div className="nav-links">
                 <NavLink className="nav-link" to="/create">
                     <i className="nav-icon ri-add-circle-line"></i>
                     <span>Create a new employee</span>
