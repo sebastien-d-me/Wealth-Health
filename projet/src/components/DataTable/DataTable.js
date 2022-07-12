@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 
 function DataTable({data, nameData}) {
-    // Sort data
+    // Sort
     const [dataSorted, setDataSorted] = useState(data);
     const [dataShow, setDataShow] = useState(true);
 
@@ -15,49 +15,99 @@ function DataTable({data, nameData}) {
             setDataSorted(dataSorted.sort((a, b) => b[type].localeCompare(a[type])));
         }
 
-        /* Refresh data */
+        /* Refresh */
         setDataShow(false);
     }
 
-    /* Refresh data */
+    /* Refresh */
     useEffect(() => {
         setDataShow(true)
     }, [dataShow]);
 
 
+    // Search
+    const [dataSearchInput, setDataSearchInput] = useState("");
+    const [dataSearched, setDataSearched] = useState([]);
+    const [dataSearchActive, setDataSearchActive] = useState(false);
+
+    useEffect(() => {
+        let resultFound = [];
+        /* Si le champ contient au moins une valeur */
+        if(dataSearchInput !== "") {
+            /* Initialise les states */
+            setDataSearched([]);
+            setDataSearchActive(true);
+            /* Pour chaque employé */
+            dataSorted.forEach((properties, index) => {
+                /* Vérifie si la recherche correspond à un élément */
+                Object.keys(properties).forEach(function(key) {
+                    if(properties[key].toLowerCase().includes(dataSearchInput.toLowerCase())) {
+                        resultFound.push(data[index]);
+                    }
+                });
+            });
+            /* Met les résultats dans le tableau */
+            setDataSearched([...new Set(resultFound)]);
+        } else {
+            setDataSearchActive(false);
+            setDataSearched([]);
+        }
+    }, [dataSearchInput]);
+  
+
     // Template
     return(
-        <table className="data-table">
-            {/* Nom des propriétés */}
-            <thead className="data-table-head">
-                <tr className="data-table-row">
+        <>
+            {/* Recherche */}
+            <div>
+                <input type="search" onChange={e => setDataSearchInput(e.target.value)}/>
+            </div>
+
+            {/* Tableau */}
+            <table className="data-table">
+                {/* Nom des propriétés */}
+                <thead className="data-table-head">
+                    <tr className="data-table-row">
+                        {
+                            nameData.map((name, index) =>
+                                <td className="data-table-sort" key={index}>
+                                    <i className="data-table-sort-arrow ri-arrow-down-s-line" onClick={() => sortData("ASC", name)}></i>
+                                    {name}
+                                    <i className="data-table-sort-arrow ri-arrow-up-s-line" onClick={() => sortData("DESC", name)}></i> 
+                                </td>
+                            )
+                        }
+                    </tr>
+                </thead>
+
+                {/* Valeurs des propriétés */}
+                <tbody className="data-table-body">
                     {
-                        nameData.map((name, index) =>
-                            <td className="data-table-sort" key={index}>
-                                <i className="data-table-sort-arrow ri-arrow-down-s-line" onClick={() => sortData("ASC", name)}></i>
-                                {name}
-                                <i className="data-table-sort-arrow ri-arrow-up-s-line" onClick={() => sortData("DESC", name)}></i> 
-                            </td>
+                        dataSearchActive === true && dataSearched.map((element, index) =>
+                            <tr className="data-table-row sss" key={index}>
+                                {
+                                    nameData.map((name, index) => 
+                                        <td className="data-table-body-value" key={index}>{element[name]}</td>
+                                    )
+                                }
+                            </tr>
                         )
                     }
-                </tr>
-            </thead>
-
-            {/* Valeurs des propriétés */}
-            <tbody className="data-table-body">
-                {
-                    dataShow === true && dataSorted.map((element, index) => 
-                        <tr className="data-table-row" key={index}>
-                            {
-                                nameData.map((name, index) => 
-                                    <td className="data-table-body-value" key={index}>{element[name]}</td>
-                                )
-                            }
-                        </tr>
-                    )
-                }
-            </tbody>
-        </table>
+                    
+                    {
+                        dataShow === true && dataSearchActive === false && dataSorted.map((element, index) => 
+                            <tr className="data-table-row" key={index}>
+                                {
+                                    nameData.map((name, index) => 
+                                        <td className="data-table-body-value" key={index}>{element[name]}</td>
+                                    )
+                                }
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </table>
+        </>
     );
 }
 
