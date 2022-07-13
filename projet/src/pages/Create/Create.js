@@ -35,7 +35,7 @@ function Create() {
 
         /* Address */
         "State": States[0].abbreviation,
-        "ZIP Code": "",
+        "ZIP code": "",
         "Street": "",
         "City": "",
 

@@ -67,16 +67,31 @@ function DataTable({data, nameData}) {
     const [minEntries, setMinEntries] = useState(0);
     const [maxEntries, setMaxEntries] = useState(0);
 
-    // Pages 
-    const [page, setPage] = useState([]);
-
     const handleChangeEntries = (event) => {  
-        setSelectedEntries(event.target.value);  
+        setSelectedEntries(parseInt(event.target.value));  
+    }
+
+    // Pages 
+    const [page, setPage] = useState(0);
+
+    const maxPage = Math.ceil(data.length / selectedEntries);
+
+    const handlePreviousPage = () => {
+        if(page === 1) {
+            setPage(0);
+        } else {
+            setPage((page + selectedEntries) % maxPage);
+        }
+    }
+
+    const handleNextPage = () => {
+        setPage((page + 1) % maxPage);
     }
 
     useEffect(() => {
-        setPage(new Array(Math.ceil(dataSorted.length / selectedEntries)).fill(0));
-    }, [selectedEntries])
+        setMinEntries(page * selectedEntries + 1);
+        setMaxEntries((page * selectedEntries) + selectedEntries);
+    }, [page, selectedEntries])
 
 
     // Refresh
@@ -112,13 +127,10 @@ function DataTable({data, nameData}) {
             </div>
 
             {/* Pages */}
-            {
-                page.map((element, index) => (
-                    <button key={index} onClick={() =>""} type="button">
-                        {index + 1}
-                    </button>
-                ))
-            }
+            <div>
+                <button onClick={handlePreviousPage} disabled={!page}>Prev</button>
+                <button onClick={handleNextPage} disabled={page === Math.ceil(data.length / selectedEntries) - 1}>Next</button>
+            </div>
 
             {/* Table */}
             <span className="data-category">Table</span>
@@ -161,7 +173,7 @@ function DataTable({data, nameData}) {
                         }
                         
                         {
-                            dataShow === true && dataSearchActive === false && dataSorted.map((element, index) => 
+                            dataShow === true && dataSearchActive === false && dataSorted.slice(page * selectedEntries, selectedEntries * (page + 1)).map((element, index) => 
                                 <tr className="data-table-row" key={index}>
                                     {
                                         nameData.map((name, index) => 
