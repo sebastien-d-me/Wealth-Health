@@ -62,6 +62,23 @@ function DataTable({data, nameData}) {
     }
 
 
+    // Entries
+    const [selectedEntries, setSelectedEntries] = useState(10);
+    const [minEntries, setMinEntries] = useState(0);
+    const [maxEntries, setMaxEntries] = useState(0);
+
+    // Pages 
+    const [page, setPage] = useState([]);
+
+    const handleChangeEntries = (event) => {  
+        setSelectedEntries(event.target.value);  
+    }
+
+    useEffect(() => {
+        setPage(new Array(Math.ceil(dataSorted.length / selectedEntries)).fill(0));
+    }, [selectedEntries])
+
+
     // Refresh
     useEffect(() => {
         setDataShow(true);
@@ -73,12 +90,38 @@ function DataTable({data, nameData}) {
     return(
         <>
             {/* Search */}
+            <span className="data-category">Search</span>
             <div className="data-search">
                 <label htmlFor="search">Search</label>
                 <input id="search" name="search" onChange={e => setDataSearchInput(e.target.value)} placeholder="Your search" type="search" />
             </div>
 
+            {/* Entries */}
+            <span className="data-category">Entries</span>
+            <div className="data-entries">
+                <div className="data-entries-select">
+                    <label>Number of entries per page</label>
+                    <select defaultValue={10} onChange={handleChangeEntries}>
+                        <option value={10}>10</option>
+                        <option value={25}>25</option>
+                        <option value={50}>50</option>
+                        <option value={100}>100</option>
+                    </select>
+                </div>
+                <span className="data-entries-total">Showing {minEntries} to {maxEntries} of {data.length} entries.</span>
+            </div>
+
+            {/* Pages */}
+            {
+                page.map((element, index) => (
+                    <button key={index} onClick={() =>""} type="button">
+                        {index + 1}
+                    </button>
+                ))
+            }
+
             {/* Table */}
+            <span className="data-category">Table</span>
             <div className="data-table-container">
                 <table className="data-table">
                     {/* Name of the properties */}

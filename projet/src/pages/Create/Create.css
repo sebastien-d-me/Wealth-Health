@@ -35,7 +35,7 @@
     flex-wrap: wrap;
     gap: 0 20px;
     margin-top: 15px;
-    width: calc(100% - 20px);
+    width: 100%;
 }
 
 .form-row-full {
@@ -72,6 +72,10 @@ input, select {
     font-size: 20px;
     height: 50px;
     padding: 0 5px;
+}
+
+.form-col > input, 
+.form-col > select {
     width: 100%;
 }
 
@@ -106,7 +110,6 @@ input, select {
     /* Row */
     .form-row {
         margin-top: 0;
-        width: 100%;
     }
 
     /* Col */

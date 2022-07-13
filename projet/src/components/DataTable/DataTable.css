@@ -1,6 +1,41 @@
+/* Category */
+.data-category {
+    color: var(--white);
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 /* Search */
 .data-search {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+/* Entries */
+.data-entries {
+    color: var(--cyan);
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.data-entries-select {
+    align-items: center;
+    display: inline-flex;
+}
+.data-entries-select > label {
+    font-size: 15px;
+}
+.data-entries-select > select {
+    font-size: 15px;
+    height: unset;
+    margin-left: 10px;
+    padding: unset;
+}
+
+.data-entries-total {
+    display: block;
+    margin-top: 15px;
 }
 
 /* Container */
