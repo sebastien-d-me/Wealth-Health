@@ -69,6 +69,9 @@ function DataTable({data, nameData}) {
 
     const handleChangeEntries = (event) => {  
         setSelectedEntries(parseInt(event.target.value));  
+        if(page * selectedEntries + 1 > maxPage) {
+            setPage(0);
+        }
     }
 
     // Pages 
