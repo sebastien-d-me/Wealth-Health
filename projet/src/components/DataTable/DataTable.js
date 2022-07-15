@@ -13,6 +13,8 @@ function DataTable({data, nameData}) {
 
         /* If the field contains at least one value */
         if(dataSearchInput !== "") {
+            /* Go to the first page */
+            setPage(0);
 
             /* Initialize states */
             setDataSearched([]);
@@ -29,7 +31,12 @@ function DataTable({data, nameData}) {
             });
 
             /* Put the results in the table */
-            setDataSearched([...new Set(resultFound)]);
+            if(resultFound.length !== 0) {
+                setDataSearched([...new Set(resultFound)]);
+            } else {
+                resultFound.push("None");
+                setDataSearched(resultFound);
+            }
         } else {
             setDataSearchActive(false);
             setDataSearched([]);
@@ -150,10 +157,17 @@ function DataTable({data, nameData}) {
 
             {/* Pages */}
             {
-                data.length !== 0 &&
+                data.length !== 0 && dataSearchInput == "" &&
                 <div>
                     <button className="btn-data-table" style={{display: !page ? "none": "" }} onClick={handlePreviousPage}>Previous page</button>
                     <button className="btn-data-table" style={{display: page === Math.ceil(data.length / selectedEntries) - 1 ? "none": "" }} onClick={handleNextPage}>Next page</button>
+                </div>
+            }
+            {
+                data.length !== 0 && dataSearchInput !== "" &&
+                <div>
+                    <button className="btn-data-table" style={{display: !page ? "none": "" }} onClick={handlePreviousPage}>Previous page</button>
+                    <button className="btn-data-table" style={{display: page === Math.ceil(dataSorted.length / selectedEntries) - 1 || "" ? "none": "" }} onClick={handleNextPage}>Next page</button>
                 </div>
             }
 
@@ -166,13 +180,13 @@ function DataTable({data, nameData}) {
                         <tr className="data-table-row">
                             {/* If there is no employees */}
                             {
-                                nameData.length === 0 &&
+                                nameData.length === 0 || dataSearched[0] === "None" &&
                                 <td className="">There is no employees for the moment...</td>
                             }
 
                             {/* If there is at least 1 employee */}
                             {
-                                nameData.length !== 0 && nameData.map((name, index) =>
+                                nameData.length !== 0 && dataSearched[0] !== "None" && nameData.map((name, index) =>
                                     <td className="data-table-sort" key={index}>
                                         <i className="data-table-sort-arrow ri-arrow-down-s-line" onClick={() => sortData("ASC", name)}></i>
                                         {name}
@@ -186,7 +200,7 @@ function DataTable({data, nameData}) {
                     {/* Property values */}
                     <tbody className="data-table-body">
                         {
-                            dataShow === true && dataSearchActive === true && dataSearched.map((element, index) =>
+                            dataShow === true && dataSearchActive === true && dataSearched[0] !== "None" && dataSearched.slice(page * selectedEntries, selectedEntries * (page + 1)).map((element, index) =>
                                 <tr className="data-table-row" key={index}>
                                     {
                                         nameData.map((name, index) => 
