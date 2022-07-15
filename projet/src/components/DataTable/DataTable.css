@@ -38,6 +38,22 @@
     margin-top: 15px;
 }
 
+/* Button */
+.btn-data-table {
+    background-color: var(--light-green);
+    border: none;
+    color: var(--black);
+    font-size: 18px;
+    margin: auto 10px 20px 0;
+    padding: 10px 20px;
+    transition: 0.5s;
+}
+.btn-data-table:hover {
+    background-color: var(--green);
+    color: var(--white);
+    cursor: pointer;
+}
+
 /* Container */
 .data-table-container {
     overflow-x: auto;

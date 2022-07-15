@@ -143,8 +143,8 @@ function DataTable({data, nameData}) {
             {
                 data.length !== 0 &&
                 <div>
-                    <button onClick={handlePreviousPage} disabled={!page}>Prev</button>
-                    <button onClick={handleNextPage} disabled={page === Math.ceil(data.length / selectedEntries) - 1}>Next</button>
+                    <button className="btn-data-table" style={{display: !page ? "none": "" }} onClick={handlePreviousPage}>Prev</button>
+                    <button className="btn-data-table" style={{display: page === Math.ceil(data.length / selectedEntries) - 1 ? "none": "" }} onClick={handleNextPage}>Next</button>
                 </div>
             }
 
