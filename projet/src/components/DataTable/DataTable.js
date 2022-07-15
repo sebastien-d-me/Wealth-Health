@@ -69,9 +69,6 @@ function DataTable({data, nameData}) {
 
     const handleChangeEntries = (event) => {  
         setSelectedEntries(parseInt(event.target.value));  
-        if(page * selectedEntries + 1 > maxPage) {
-            setPage(0);
-        }
     }
 
     // Pages 
@@ -82,6 +79,8 @@ function DataTable({data, nameData}) {
     const handlePreviousPage = () => {
         if(page === 1) {
             setPage(0);
+        } else if(page + selectedEntries % maxPage === page) {
+            setPage(page - 1 % maxPage);
         } else {
             setPage((page + selectedEntries) % maxPage);
         }
@@ -92,13 +91,19 @@ function DataTable({data, nameData}) {
     }
 
     useEffect(() => {
+        /* Min / Max entries */
         setMinEntries(page * selectedEntries + 1);
         if((page * selectedEntries + selectedEntries) < data.length) {
             setMaxEntries(page * selectedEntries + selectedEntries);
         } else {
             setMaxEntries(data.length);
         }
-    }, [page, selectedEntries])
+
+        /* Go to the first page if more than maxPage */
+        if(minEntries > data.length) {
+            setPage(0);
+        }
+    }, [page, selectedEntries, minEntries])
 
 
     // Refresh
@@ -147,8 +152,8 @@ function DataTable({data, nameData}) {
             {
                 data.length !== 0 &&
                 <div>
-                    <button className="btn-data-table" style={{display: !page ? "none": "" }} onClick={handlePreviousPage}>Prev</button>
-                    <button className="btn-data-table" style={{display: page === Math.ceil(data.length / selectedEntries) - 1 ? "none": "" }} onClick={handleNextPage}>Next</button>
+                    <button className="btn-data-table" style={{display: !page ? "none": "" }} onClick={handlePreviousPage}>Previous page</button>
+                    <button className="btn-data-table" style={{display: page === Math.ceil(data.length / selectedEntries) - 1 ? "none": "" }} onClick={handleNextPage}>Next page</button>
                 </div>
             }
 
