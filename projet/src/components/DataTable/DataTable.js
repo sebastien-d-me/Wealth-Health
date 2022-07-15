@@ -99,18 +99,27 @@ function DataTable({data, nameData}) {
 
     useEffect(() => {
         /* Min / Max entries */
-        setMinEntries(page * selectedEntries + 1);
-        if((page * selectedEntries + selectedEntries) < data.length) {
-            setMaxEntries(page * selectedEntries + selectedEntries);
+        if(dataSearchInput === "") {
+            setMinEntries(page * selectedEntries + 1);
+            if((page * selectedEntries + selectedEntries) < data.length) {
+                setMaxEntries(page * selectedEntries + selectedEntries);
+            } else {
+                setMaxEntries(data.length);
+            }
         } else {
-            setMaxEntries(data.length);
+            setMinEntries(page * selectedEntries + 1);
+            if((page * selectedEntries + selectedEntries) < dataSearched.length) {
+                setMaxEntries(page * selectedEntries + selectedEntries);
+            } else {
+                setMaxEntries(dataSearched.length);
+            }
         }
 
         /* Go to the first page if more than maxPage */
         if(minEntries > data.length) {
             setPage(0);
         }
-    }, [page, selectedEntries, minEntries])
+    }, [page, dataSearched, dataSearchInput, selectedEntries, minEntries])
 
 
     // Refresh
@@ -150,14 +159,21 @@ function DataTable({data, nameData}) {
                                 <option value={100}>100</option>
                             </select>
                         </div>
-                        <span className="data-entries-total">Showing {minEntries} to {maxEntries} of {data.length} entries.</span>
+                        {
+                            dataSearchInput === "" &&
+                            <span className="data-entries-total">Showing {minEntries} to {maxEntries} of {data.length} entries.</span>
+                        }
+                        {
+                            dataSearchInput !== "" &&
+                            <span className="data-entries-total">Showing {minEntries} to {maxEntries} of {dataSearched.length} entries.</span>
+                        }
                     </div>
                 </>
             }
 
             {/* Pages */}
             {
-                data.length !== 0 && dataSearchInput == "" &&
+                data.length !== 0 && dataSearchInput === "" &&
                 <div>
                     <button className="btn-data-table" style={{display: !page ? "none": "" }} onClick={handlePreviousPage}>Previous page</button>
                     <button className="btn-data-table" style={{display: page === Math.ceil(data.length / selectedEntries) - 1 ? "none": "" }} onClick={handleNextPage}>Next page</button>
@@ -167,7 +183,7 @@ function DataTable({data, nameData}) {
                 data.length !== 0 && dataSearchInput !== "" &&
                 <div>
                     <button className="btn-data-table" style={{display: !page ? "none": "" }} onClick={handlePreviousPage}>Previous page</button>
-                    <button className="btn-data-table" style={{display: page === Math.ceil(dataSorted.length / selectedEntries) - 1 || "" ? "none": "" }} onClick={handleNextPage}>Next page</button>
+                    <button className="btn-data-table" style={{display: page === Math.ceil(dataSorted.length / selectedEntries) - 1 || page * selectedEntries + selectedEntries >= dataSearched.length ? "none": "" }} onClick={handleNextPage}>Next page</button>
                 </div>
             }
 
