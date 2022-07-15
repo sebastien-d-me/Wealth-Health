@@ -93,7 +93,11 @@ function DataTable({data, nameData}) {
 
     useEffect(() => {
         setMinEntries(page * selectedEntries + 1);
-        setMaxEntries((page * selectedEntries) + selectedEntries);
+        if((page * selectedEntries + selectedEntries) < data.length) {
+            setMaxEntries(page * selectedEntries + selectedEntries);
+        } else {
+            setMaxEntries(data.length);
+        }
     }, [page, selectedEntries])
 
 
