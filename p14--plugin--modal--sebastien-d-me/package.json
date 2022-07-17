@@ -1,6 +1,6 @@
 {
     "name": "p14--plugin--modal--sebastien-d-me",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Plugin | Modal | P14 OpenClassrooms | Sebastien D",
     "main": "dist/index.js",
     "module": "dist/index.js",
