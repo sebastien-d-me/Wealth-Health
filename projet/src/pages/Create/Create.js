@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import States from "../../assets/data/States.json";
 import Departments from "../../assets/data/Departments.json";
-import Modal from "p14--plugin--modal--sebastien-d-me";
+import Modal from "plugin--p14--modal--sebastien-d-me";
 
 
 function Create() {

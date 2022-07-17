@@ -1,6 +1,5 @@
 import "./Modal.css";
 import React, { useState } from "react";
-import "remixicon/fonts/remixicon.css";
 
 
 function Modal({id, parameter, message}) {
@@ -18,7 +17,7 @@ function Modal({id, parameter, message}) {
                 modalClosed === false &&
                 <div className="modal" id={id} style={parameter}>
                     <div className="modal-content">
-                        <i className="modal-close-icon ri-close-line" onClick={closeModal}></i>
+                        <span className="modal-close-icon" onClick={closeModal}>✖</span>
                         <span>{message}</span>
                     </div>
                 </div>
