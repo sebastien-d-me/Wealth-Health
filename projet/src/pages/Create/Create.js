@@ -6,11 +6,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import States from "../../assets/data/States.json";
 import Departments from "../../assets/data/Departments.json";
-import Modal from "../../components/Modal/Modal";
+import Modal from "p14--plugin--modal--sebastien-d-me";
+
 
 function Create() {
     // Modal
-    const [modalShow, setModalShow] = useState(false);
+    const [modalReset, setModalReset] = useState(false);
     const [displayModal, setDisplayModal] = useState(false);
 
     const modalParameter = {
@@ -91,7 +92,7 @@ function Create() {
     useEffect(() => {
         if(formOK === true && errorForm.length === 0) {
             /* Show the modal */
-            setModalShow(!modalShow);
+            setModalReset(!modalReset);
             setDisplayModal(true);
 
             /* Get the list of current employees */
@@ -113,7 +114,7 @@ function Create() {
         
                 /* Address */
                 "State": States[0].abbreviation,
-                "ZIP Code": "",
+                "ZIP code": "",
                 "Street": "",
                 "City": "",
         
@@ -155,11 +156,11 @@ function Create() {
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="first-name">First name</label>
-                        <input id="first-name" name="First name" onChange={handleFormChange} placeholder="Your first name" type="text" />
+                        <input autoComplete="off" id="first-name" name="First name" onChange={handleFormChange} placeholder="Your first name" type="text" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="last-name">Last name</label>
-                        <input id="last-name" name="Last name" onChange={handleFormChange} placeholder="Your last name" type="text" />
+                        <input autoComplete="off" id="last-name" name="Last name" onChange={handleFormChange} placeholder="Your last name" type="text" />
                     </div>
                 </div>
 
@@ -187,18 +188,18 @@ function Create() {
                     </div>
                     <div className="form-col">
                         <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zip-code" name="ZIP Code" onChange={handleFormChange} type="number" />
+                        <input id="zip-code" name="ZIP code" onChange={handleFormChange} type="number" />
                     </div>
                 </div>
 
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="street">Street</label>
-                        <input id="street" name="Street" onChange={handleFormChange} type="text" />
+                        <input autoComplete="off" id="street" name="Street" onChange={handleFormChange} type="text" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="city">City</label>
-                        <input id="city" name="City" onChange={handleFormChange} type="text" />
+                        <input autoComplete="off" id="city" name="City" onChange={handleFormChange} type="text" />
                     </div>
                 </div>
 
@@ -224,7 +225,7 @@ function Create() {
             {/* Form Message */}
             {
                 displayModal === true &&
-                <Modal key={modalShow} id="modal-created" parameter={modalParameter} message="Employee Created !" />
+                <Modal key={modalReset} id="modal-created" parameter={modalParameter} message="Employee Created !" />
             }
         </>
     );

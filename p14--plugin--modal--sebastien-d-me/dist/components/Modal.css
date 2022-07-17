@@ -1,0 +1,20 @@
+/* Modal */
+.modal {
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Close */
+.modal-close-icon {
+    font-size: 25px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    transition: 0.5s;
+}
+.modal-close-icon:hover {
+    cursor: pointer;
+}
