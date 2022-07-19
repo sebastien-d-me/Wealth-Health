@@ -99,7 +99,6 @@ function DataTable({data, nameData}) {
 
     useEffect(() => {
         /* Min / Max entries */
-        console.log(dataSearchInput)
         if(dataSearchInput === "") {
             setMinEntries(page * selectedEntries + 1);
             if((page * selectedEntries + selectedEntries) < data.length) {
