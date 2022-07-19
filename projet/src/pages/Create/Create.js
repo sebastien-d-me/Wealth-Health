@@ -223,10 +223,7 @@ function Create() {
 
 
             {/* Form Message */}
-            {
-                displayModal === true &&
-                <Modal key={modalReset} id="modal-created" parameter={modalParameter} message="Employee Created !" />
-            }
+            <Modal key={modalReset} id="modal-created" showModal={displayModal} closeModal={() => setDisplayModal(false)} parameter={modalParameter} message="Employee Created !" />
         </>
     );
 }

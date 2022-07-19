@@ -1,20 +1,12 @@
 import "./Modal.css";
-import React, { useState } from "react";
 
 
-function Modal({id, parameter, message}) {
-    // Close
-    const [modalClosed, setModalClosed] = useState(false);
-    const closeModal = () => {
-        setModalClosed(true);
-    }
-
-    
+function Modal({id, showModal, closeModal, parameter, message}) {  
     // Template
     return (
-        <div>
+        <>
             {
-                modalClosed === false &&
+                showModal === true &&
                 <div className="modal" id={id} style={parameter}>
                     <div className="modal-content">
                         <span className="modal-close-icon" onClick={closeModal}>✖</span>
@@ -22,7 +14,7 @@ function Modal({id, parameter, message}) {
                     </div>
                 </div>
             }
-        </div>
+        </>
     );
 }
 

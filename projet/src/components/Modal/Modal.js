@@ -1,24 +1,15 @@
 import "./Modal.css";
-import { useState } from "react";
-import "remixicon/fonts/remixicon.css";
 
 
-function Modal({id, parameter, message}) {
-    // Close
-    const [modalClosed, setModalClosed] = useState(false);
-    const closeModal = () => {
-        setModalClosed(true);
-    }
-
-    
+function Modal({id, showModal, closeModal, parameter, message}) {  
     // Template
     return (
         <>
             {
-                modalClosed === false &&
+                showModal &&
                 <div className="modal" id={id} style={parameter}>
                     <div className="modal-content">
-                        <i className="modal-close-icon ri-close-line" onClick={closeModal}></i>
+                        <span className="modal-close-icon" onClick={closeModal}>✖</span>
                         <span>{message}</span>
                     </div>
                 </div>
