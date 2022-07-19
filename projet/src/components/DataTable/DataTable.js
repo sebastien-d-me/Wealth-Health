@@ -99,6 +99,7 @@ function DataTable({data, nameData}) {
 
     useEffect(() => {
         /* Min / Max entries */
+        console.log(dataSearchInput)
         if(dataSearchInput === "") {
             setMinEntries(page * selectedEntries + 1);
             if((page * selectedEntries + selectedEntries) < data.length) {
@@ -196,7 +197,7 @@ function DataTable({data, nameData}) {
                         <tr className="data-table-row">
                             {/* If there is no employees */}
                             {
-                                nameData.length === 0 || dataSearched[0] === "None" &&
+                                ((nameData.length === 0) || (dataSearched[0] === "None")) &&
                                 <td className="">There is no employees for the moment...</td>
                             }
 
