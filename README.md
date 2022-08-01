@@ -18,5 +18,5 @@ Ce projet est le n°14 du parcours [**Développeur Front-End**](https://openclas
 - Refondre une application pour réduire la dette technique
 
 ### Informations complémentaires
-- Soutenance à valider.
+- Soutenance validé le 01/08/2022.
 - Lien vers le site : [Cliquez-ici](https://sebastien-d-me.github.io/SebastienDelahaye_14_29062022/ "Cliquez-ici").

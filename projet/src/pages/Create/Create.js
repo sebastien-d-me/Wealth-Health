@@ -188,18 +188,18 @@ function Create() {
                     </div>
                     <div className="form-col">
                         <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zip-code" name="ZIP code" onChange={handleFormChange} type="number" />
+                        <input id="zip-code" name="ZIP code" onChange={handleFormChange} placeholder="Your ZIP code" type="number" />
                     </div>
                 </div>
 
                 <div className="form-row">
                     <div className="form-col">
                         <label htmlFor="street">Street</label>
-                        <input autoComplete="off" id="street" name="Street" onChange={handleFormChange} type="text" />
+                        <input autoComplete="off" id="street" name="Street" onChange={handleFormChange} placeholder="Your street name" type="text" />
                     </div>
                     <div className="form-col">
                         <label htmlFor="city">City</label>
-                        <input autoComplete="off" id="city" name="City" onChange={handleFormChange} type="text" />
+                        <input autoComplete="off" id="city" name="City" onChange={handleFormChange} placeholder="Your city name" type="text" />
                     </div>
                 </div>
 
