@@ -1,6 +1,6 @@
 {
-    "name": "plugin--p14--modal--sebastien-d-me",
-    "version": "1.0.4",
+    "name": "react-modal-p14-sebastien-d",
+    "version": "1.0.1",
     "description": "Plugin | Modal | P14 OpenClassrooms | Sebastien D",
     "main": "dist/index.js",
     "module": "dist/index.js",
@@ -13,14 +13,20 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/sebastien-d-me/Modal-P14-Sebastien-d-me"
+        "url": "git+https://github.com/sebastien-d-me/Wealth-Health/tree/main/react-modal-p14-sebastien-d"
     },
+    "keywords": [
+        "react",
+        "module",
+        "component",
+        "modal"
+    ],
     "author": "Sebastien D",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/sebastien-d-me/Modal-P14-Sebastien-d-me/issues"
+        "url": "https://github.com/sebastien-d-me/Wealth-Health/tree/main/react-modal-p14-sebastien-d/issues"
     },
-    "homepage": "https://github.com/sebastien-d-me/Modal-P14-Sebastien-d-me",
+    "homepage": "https://github.com/sebastien-d-me/Wealth-Health/tree/main/react-modal-p14-sebastien-d",
     "devDependencies": {
         "@babel/cli": "^7.18.6",
         "@babel/core": "^7.18.6",

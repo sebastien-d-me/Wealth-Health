@@ -5,14 +5,14 @@ This plugin is for the project 14 from OpenClassrooms formation "Front-End".
 
 ## How to install ?
 ```cmd
-npm i plugin--p14--modal--sebastien-d-me
+npm i react-modal-p14-sebastien-d
 ```
 
 
 ## How to use ?
 1. Import the plugin in your project like this : 
 ```javascript
-import Modal from "plugin--p14--modal--sebastien-d-me";
+import Modal from "react-modal-p14-sebastien-d";
 ```
 
 2. The state :

@@ -19,4 +19,4 @@ Ce projet est le n°14 du parcours [**Développeur Front-End**](https://openclas
 
 ### Informations complémentaires
 - Soutenance validé le 01/08/2022.
-- Lien vers le site : [Cliquez-ici](https://sebastien-d-me.github.io/SebastienDelahaye_14_29062022/ "Cliquez-ici").
+- Lien vers le site : [Cliquez-ici](https://sebastien-d-me.github.io/Wealth-Health/ "Cliquez-ici").
