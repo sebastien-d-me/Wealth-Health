@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/SebastienDelahaye_14_29062022/static/css/main.9290295c.css",
-    "main.js": "/SebastienDelahaye_14_29062022/static/js/main.771a7dde.js",
-    "static/js/787.70c8a722.chunk.js": "/SebastienDelahaye_14_29062022/static/js/787.70c8a722.chunk.js",
-    "static/media/remixicon.svg?t=1590207869815": "/SebastienDelahaye_14_29062022/static/media/remixicon.9cedd2150922ead84869.svg",
-    "static/media/OpenSans-VariableFont_wdth,wght.ttf": "/SebastienDelahaye_14_29062022/static/media/OpenSans-VariableFont_wdth,wght.9c7806d7ef7d294f568e.ttf",
-    "static/media/remixicon.eot?t=1590207869815": "/SebastienDelahaye_14_29062022/static/media/remixicon.5cb99e6cba5a4619063f.eot",
-    "static/media/remixicon.ttf?t=1590207869815": "/SebastienDelahaye_14_29062022/static/media/remixicon.f2616f597cf98f38d234.ttf",
-    "static/media/remixicon.woff?t=1590207869815": "/SebastienDelahaye_14_29062022/static/media/remixicon.8d09fa11700ed63cf96e.woff",
-    "static/media/remixicon.woff2?t=1590207869815": "/SebastienDelahaye_14_29062022/static/media/remixicon.90668f6f9b3c2c18a090.woff2",
-    "static/media/Logo.png": "/SebastienDelahaye_14_29062022/static/media/Logo.bb77d480647b67bbb3a4.png",
-    "index.html": "/SebastienDelahaye_14_29062022/index.html",
-    "main.9290295c.css.map": "/SebastienDelahaye_14_29062022/static/css/main.9290295c.css.map",
-    "main.771a7dde.js.map": "/SebastienDelahaye_14_29062022/static/js/main.771a7dde.js.map",
-    "787.70c8a722.chunk.js.map": "/SebastienDelahaye_14_29062022/static/js/787.70c8a722.chunk.js.map"
+    "main.css": "/Wealth-Health/static/css/main.ee7a0b81.css",
+    "main.js": "/Wealth-Health/static/js/main.3a8dfec3.js",
+    "static/js/787.8be201f2.chunk.js": "/Wealth-Health/static/js/787.8be201f2.chunk.js",
+    "static/media/remixicon.svg?t=1590207869815": "/Wealth-Health/static/media/remixicon.9cedd2150922ead84869.svg",
+    "static/media/OpenSans-VariableFont_wdth,wght.ttf": "/Wealth-Health/static/media/OpenSans-VariableFont_wdth,wght.9c7806d7ef7d294f568e.ttf",
+    "static/media/remixicon.eot?t=1590207869815": "/Wealth-Health/static/media/remixicon.5cb99e6cba5a4619063f.eot",
+    "static/media/remixicon.ttf?t=1590207869815": "/Wealth-Health/static/media/remixicon.f2616f597cf98f38d234.ttf",
+    "static/media/remixicon.woff?t=1590207869815": "/Wealth-Health/static/media/remixicon.8d09fa11700ed63cf96e.woff",
+    "static/media/remixicon.woff2?t=1590207869815": "/Wealth-Health/static/media/remixicon.90668f6f9b3c2c18a090.woff2",
+    "static/media/Logo.png": "/Wealth-Health/static/media/Logo.bb77d480647b67bbb3a4.png",
+    "index.html": "/Wealth-Health/index.html",
+    "main.ee7a0b81.css.map": "/Wealth-Health/static/css/main.ee7a0b81.css.map",
+    "main.3a8dfec3.js.map": "/Wealth-Health/static/js/main.3a8dfec3.js.map",
+    "787.8be201f2.chunk.js.map": "/Wealth-Health/static/js/787.8be201f2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9290295c.css",
-    "static/js/main.771a7dde.js"
+    "static/css/main.ee7a0b81.css",
+    "static/js/main.3a8dfec3.js"
   ]
 }
