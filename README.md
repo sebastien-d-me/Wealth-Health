@@ -1,3 +1,5 @@
+<meta property="og:image" content="https://raw.githubusercontent.com/sebastien-d-me/Wealth-Health/main/site/public/logo512.png">
+
 # Formation Développeur Front-End
 ## Projet 14 - Wealth Health
 ------------
