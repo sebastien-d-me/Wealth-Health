@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Wealth-Health/static/css/main.ee7a0b81.css",
+    "main.css": "/Wealth-Health/static/css/main.94f825a1.css",
     "main.js": "/Wealth-Health/static/js/main.d325147b.js",
     "static/js/787.8be201f2.chunk.js": "/Wealth-Health/static/js/787.8be201f2.chunk.js",
     "static/media/remixicon.svg?t=1590207869815": "/Wealth-Health/static/media/remixicon.9cedd2150922ead84869.svg",
@@ -11,12 +11,12 @@
     "static/media/remixicon.woff2?t=1590207869815": "/Wealth-Health/static/media/remixicon.90668f6f9b3c2c18a090.woff2",
     "static/media/Logo.png": "/Wealth-Health/static/media/Logo.bb77d480647b67bbb3a4.png",
     "index.html": "/Wealth-Health/index.html",
-    "main.ee7a0b81.css.map": "/Wealth-Health/static/css/main.ee7a0b81.css.map",
+    "main.94f825a1.css.map": "/Wealth-Health/static/css/main.94f825a1.css.map",
     "main.d325147b.js.map": "/Wealth-Health/static/js/main.d325147b.js.map",
     "787.8be201f2.chunk.js.map": "/Wealth-Health/static/js/787.8be201f2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee7a0b81.css",
+    "static/css/main.94f825a1.css",
     "static/js/main.d325147b.js"
   ]
 }
